@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Popcorn Goggles Experiment</title>
+<style>
+html, body {
+  width: 800px;
+  margin: 0 auto;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  background: yellow;
+}
+
+iframe#hack {
+  overflow: hidden;
+  border: none;
+  width: 800px;
+  height: 480px;
+  visibility: hidden;
+}
+</style>
+<script src="jquery.min.js"></script>
+<script src="jquery.hack-player.js"></script>
+<script>
+$(window).load(function() {
+  $("#hack").zoom(0.75).attachHackPlayer(function(player) {
+    var id = setInterval(function() {
+      if (!player.goForward())
+        clearInterval(id); 
+    }, 1000);
+    player.goToBeginning();
+    $(this).css("visibility", "visible").focus();
+  });
+});
+</script>
+<p>Below is a hack created with <a href="http://hackasaurus.org/goggles/">Web X-Ray Goggles</a>. Once it plays through, you can use the left and right arrow keys to go back and forward.</p>
+<iframe id="hack" src="sample-hack.html"></iframe>
