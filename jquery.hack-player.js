@@ -57,7 +57,10 @@
     
       window.webxrayWhenGogglesLoad = function(ui) {
         var player = HackPlayer(ui);
-        
+
+        // Hide the HUD and transparent welcome message.
+        ui.jQuery('.webxray-tmsg-overlay, .webxray-hud').hide();
+        ui.input.deactivate();
         $(iframe).data('player', player);
         cb.call(iframe, player);
       };
