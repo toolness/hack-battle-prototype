@@ -1,6 +1,30 @@
 (function(jQuery) {
   function HackPlayer(ui) {
+    var position = 0;
+    var maxPosition = 0;
+
+    while (ui.commandManager.canUndo()) {
+      maxPosition++;
+      ui.commandManager.undo();
+    }
+
     var self = {
+      goTo: function(newPosition, isInstant) {
+        if (newPosition < 0)
+          newPosition = maxPosition + 1 + newPosition;
+        if (newPosition >= 0 && newPosition <= maxPosition) {
+          while (position < newPosition)
+            self.goForward(isInstant);
+          while (position > newPosition)
+            self.goBack(isInstant);
+        }
+      },
+      getPosition: function() {
+        return position;
+      },
+      getEndPosition: function() {
+        return maxPosition;
+      },
       goBack: function(isInstant) {
         if (!self.canGoBack())
           return false;
@@ -8,6 +32,7 @@
           ui.commandManager.undo();
         else
           ui.mixMaster.undo();
+        position--;
         return true;
       },
       goForward: function(isInstant) {
@@ -17,6 +42,7 @@
           ui.commandManager.redo();
         else
           ui.mixMaster.redo();
+        position++;
         return true;
       },
       canGoBack: function() {
