@@ -17,91 +17,24 @@ a:hover {
   background: yellow;
 }
 
-iframe#hack {
-  border: none;
+#hack {
   width: 800px;
-  height: 480px;
-  visibility: hidden;
-}
-
-div#controls {
-  margin-top: 10px;
-  display: none;
-}
-
-button#play {
-  width: 32px;
-  height: 32px;
-  margin-right: 15px;
-}
-
-span#slider {
-  display: inline-block;
-  width: 740px;
+  height: 512px;
+  background: #f0f0f0;
 }
 </style>
 <link rel="stylesheet" href="jquery-ui.css">
 <script src="jquery.min.js"></script>
 <script src="jquery-ui.min.js"></script>
 <script src="jquery.hack-player.js"></script>
+<script src="jquery-ui.hack-player.js"></script>
 <script>
 $(window).load(function() {
-  $("#hack").zoom(0.75).attachHackPlayer(function(player) {
-    var playSpeed = 1000;
-    var playerIntervalID = null;
-
-    function stop() {
-      if (playerIntervalID !== null) {
-        clearInterval(playerIntervalID);
-        playerIntervalID = null;
-      }
-      $("#play").button("option", {icons: {primary: "ui-icon-play"}});
-    }
-    
-    function step() {
-      player.goForward();
-      $("#slider").slider("value", player.getPosition());
-      if (!player.canGoForward())
-        stop();
-    }
-    
-    function play() {
-      if (playerIntervalID === null) {
-        playerIntervalID = setInterval(step, playSpeed);
-        $("#play").button("option", {icons: {primary: "ui-icon-pause"}});
-        if (player.canGoForward())
-          step();
-        else {
-          player.goToBeginning();
-          $("#slider").slider("value", 0);
-        }
-      }
-    }
-    
-    $("#slider").slider({
-      value: 0,
-      min: 0,
-      max: player.getEndPosition(),
-      step: 1,
-      slide: function(event, ui) {
-        player.goTo(ui.value);
-      }
-    });
-    $("#play").button({text: false}).click(function() {
-      if (playerIntervalID === null)
-        play();
-      else
-        stop();
-    });
-    $(this).css("visibility", "visible").focus();
-    $("#controls").show();
-    stop();
-    window.gPlayer = player;
+  $("#hack").hackPlayer({
+    src: "sample-hack.html",
+    zoom: 0.75
   });
 });
 </script>
 <p>Below is a page that was hacked with <a href="http://hackasaurus.org/goggles/">Web X-Ray Goggles</a>. Press the play button to see the hack unfold.</p>
-<iframe id="hack" src="sample-hack.html"></iframe>
-<div id="controls">
-  <button id="play">&nbsp;</button><span id="slider"></span>
-</div>
+<div id="hack"></div>
