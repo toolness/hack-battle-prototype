@@ -91,7 +91,22 @@ $(window).ready(function() {
   $("#fight").click(function() {
     $("#one button, #two button").click();
   });
+  removeTopNavBar("#one iframe");
+  removeTopNavBar("#two iframe");
 });
+
+function removeTopNavBar(selector) {
+  var intervalID = setInterval(function() {
+    var sel = $(selector);
+    if (sel.length) {
+      var topNav = sel.contents().find(".hackpub-top-bar");
+      if (topNav.length) {
+        topNav.remove();
+        clearInterval(intervalID);
+      }
+    }
+  }, 100);
+}
 </script>
 <h1>
   <a href="http://hackasaurus.org/"><img src="http://hackasaurus.org/images/header/hackasaurus-blue-logo.png"></a>
