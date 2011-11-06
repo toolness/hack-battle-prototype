@@ -60,7 +60,6 @@ jQuery.fn.extend({
         $(this).css("visibility", "visible").focus();
         controls.show();
         stop();
-        window.gPlayer = player;
       });
     });
     var controls = $('<div></div>');
