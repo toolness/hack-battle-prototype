@@ -3,6 +3,8 @@
     var position = 0;
     var maxPosition = 0;
 
+    ui.modalUnloadBlocker.unload();
+    
     while (ui.commandManager.canUndo()) {
       maxPosition++;
       ui.commandManager.undo();
