@@ -49,6 +49,27 @@ span.versus {
 h1 {
   text-align: center;
 }
+
+#fight-wrapper {
+  padding-top: 20px;
+  clear: both;
+  text-align: center;
+}
+
+#fight {
+  display: inline-block;
+  padding: 8px;
+  border: 1px solid black;
+  background: #f0f0f0;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18pt;
+}
+
+div#fight:hover {
+  color: white;
+  background: firebrick;
+}
 </style>
 <link rel="stylesheet" href="css/jquery-ui.css">
 <script src="js/jquery.min.js"></script>
@@ -67,6 +88,9 @@ $(window).ready(function() {
     playSpeed: 100,
     zoom: 0.5
   });
+  $("#fight").click(function() {
+    $("#one button, #two button").click();
+  });
 });
 </script>
 <h1>
@@ -78,4 +102,7 @@ $(window).ready(function() {
   <div id="one" class="hack"></div>
   <span class="versus">vs.</span> 
   <div id="two" class="hack"></div>
+</div>
+<div id="fight-wrapper">
+  <div id="fight">Fight!</div>
 </div>
