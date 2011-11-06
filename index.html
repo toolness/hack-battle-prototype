@@ -3,10 +3,11 @@
 <title>Popcorn Goggles Experiment</title>
 <style>
 html, body {
-  width: 800px;
+  width: 1024px;
   margin: 0 auto;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 10pt;
+  padding-top: 10px;
 }
 
 a {
@@ -17,14 +18,31 @@ a:hover {
   background: yellow;
 }
 
-#hack {
+.hack {
   width: 490px;
   height: 420px;
   background: #f0f0f0;
 }
 
-#hack iframe {
+.hack iframe {
   overflow: hidden;
+}
+
+#one.hack {
+  float: left;
+}
+
+#two.hack {
+  float: right;
+}
+
+div.hacks {
+  text-align: center;
+}
+
+span.versus {
+  display: inline-block;
+  padding-top: 200px;
 }
 </style>
 <link rel="stylesheet" href="css/jquery-ui.css">
@@ -34,11 +52,18 @@ a:hover {
 <script src="js/jquery-ui.hack-player.js"></script>
 <script>
 $(window).ready(function() {
-  $("#hack").hackPlayer({
-    src: "sample-hack.html",
+  $("#one").hackPlayer({
+    src: "hack-1.html",
+    zoom: 0.5
+  });
+  $("#two").hackPlayer({
+    src: "hack-2.html",
     zoom: 0.5
   });
 });
 </script>
-<p>Below is a page that was hacked with <a href="http://hackasaurus.org/goggles/">Web X-Ray Goggles</a>. Press the play button to see the hack unfold.</p>
-<div id="hack"></div>
+<div class="hacks">
+  <div id="one" class="hack"></div>
+  <span class="versus">vs.</span> 
+  <div id="two" class="hack"></div>
+</div>
