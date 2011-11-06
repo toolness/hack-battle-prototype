@@ -18,9 +18,13 @@ a:hover {
 }
 
 #hack {
-  width: 800px;
-  height: 512px;
+  width: 490px;
+  height: 420px;
   background: #f0f0f0;
+}
+
+#hack iframe {
+  overflow: hidden;
 }
 </style>
 <link rel="stylesheet" href="css/jquery-ui.css">
@@ -32,7 +36,7 @@ a:hover {
 $(window).ready(function() {
   $("#hack").hackPlayer({
     src: "sample-hack.html",
-    zoom: 0.75
+    zoom: 0.5
   });
 });
 </script>
