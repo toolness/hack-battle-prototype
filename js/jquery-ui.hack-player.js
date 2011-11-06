@@ -60,8 +60,10 @@ jQuery.fn.extend({
         $(this).css("visibility", "visible").focus();
         controls.show();
         stop();
-        player.goToEnd();
-        scrubber.slider("value", player.getEndPosition());
+        if (options.startAtEnd) {
+          player.goToEnd();
+          scrubber.slider("value", player.getEndPosition());
+        }
       });
     });
     var controls = $('<div></div>');
