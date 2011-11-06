@@ -72,7 +72,9 @@
         '-webkit-transform': 'scale(' + scale + ')',
         '-webkit-transform-origin': 'top left',
         '-moz-transform': 'scale(' + scale + ')',
-        '-moz-transform-origin': 'top left'
+        '-moz-transform-origin': 'top left',
+        '-o-transform': 'scale(' + scale + ')',
+        '-o-transform-origin': 'top left'
       });
       
       return this;
