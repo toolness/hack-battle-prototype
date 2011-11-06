@@ -23,6 +23,25 @@ a:hover {
   background: #f0f0f0;
 }
 
+.hack-container {
+  position: relative;
+}
+
+.hack-overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 420px;
+  width: 490px;
+  color: white;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 500;
+}
+
+.hack-overlay h1 {
+  padding-top: 180px;
+}
+
 .hack iframe {
   overflow: hidden;
 }
@@ -89,6 +108,7 @@ $(window).ready(function() {
     zoom: 0.5
   });
   $("#fight").click(function() {
+    $(".hack-overlay").remove();
     $("#one button, #two button").click();
   });
   removeTopNavBar("#one iframe");
@@ -116,11 +136,17 @@ function removeTopNavBar(selector) {
 <div class="hacks">
   <div id="one" class="hack-container">
     <div class="hack"></div>
+    <div class="hack-overlay">
+      <h1>Swigz</h1>
+    </div>
     <a href="hack-1.html">Hack this</a>
   </div>
   <span class="versus">vs.</span> 
   <div id="two" class="hack-container">
     <div class="hack"></div>
+    <div class="hack-overlay">
+      <h1>Hackbarth</h1>
+    </div>
     <a href="hack-2.html">Hack this</a>
   </div>
 </div>
