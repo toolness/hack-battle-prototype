@@ -61,6 +61,7 @@ jQuery.fn.extend({
         controls.show();
         stop();
         player.goToEnd();
+        scrubber.slider("value", player.getEndPosition());
       });
     });
     var controls = $('<div></div>');
