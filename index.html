@@ -27,11 +27,11 @@ a:hover {
   overflow: hidden;
 }
 
-#one.hack {
+#one {
   float: left;
 }
 
-#two.hack {
+#two {
   float: right;
 }
 
@@ -78,12 +78,12 @@ div#fight:hover {
 <script src="js/jquery-ui.hack-player.js"></script>
 <script>
 $(window).ready(function() {
-  $("#one").hackPlayer({
+  $("#one .hack").hackPlayer({
     src: "hack-1.html",
     playSpeed: 100,
     zoom: 0.5
   });
-  $("#two").hackPlayer({
+  $("#two .hack").hackPlayer({
     src: "hack-2.html",
     playSpeed: 100,
     zoom: 0.5
@@ -114,9 +114,15 @@ function removeTopNavBar(selector) {
   Hack Battle!
 </h1>
 <div class="hacks">
-  <div id="one" class="hack"></div>
+  <div id="one" class="hack-container">
+    <div class="hack"></div>
+    <a href="hack-1.html">Hack this</a>
+  </div>
   <span class="versus">vs.</span> 
-  <div id="two" class="hack"></div>
+  <div id="two" class="hack-container">
+    <div class="hack"></div>
+    <a href="hack-2.html">Hack this</a>
+  </div>
 </div>
 <div id="fight-wrapper">
   <div id="fight">Fight!</div>
